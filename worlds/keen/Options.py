@@ -16,6 +16,20 @@ class EpisodeSelect(Choice):
 
     default = option_both
 
+class DifficultySelect(Choice):
+    """
+    Which difficulty setting to use for the logic.
+    You can choose to play on a difficulty other that the one
+    selected here, but some checks may become out of logic.
+    """
+    display_name = "Difficulty"
+
+    option_easy = 0
+    option_normal = 1
+    option_hard = 2
+
+    default = option_easy
+
 class EnableGemsets(Toggle):
     """
     Whether gemsets should be enabled in the seed.
@@ -135,6 +149,7 @@ class RandomizeWetsuit(Choice):
 @dataclass
 class KeenOptions(PerGameCommonOptions):
     episode_select: EpisodeSelect
+    difficulty_select: DifficultySelect
     enable_gemsets: EnableGemsets
     additional_starting_levels: AdditionalStartingLevels
     enable_conesanity: EnableConesanity
