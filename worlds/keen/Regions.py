@@ -80,7 +80,8 @@ def create_ck5_regions(world):
                 ) or
                 state.has("Brownian Motion Inducer Gemset", player)
             )
-        ))
+        ) and
+        state.has("Pogo Stick", player))
     
     for region_name in ck5_locations_by_region:
         attach_locations(world, region_name)
