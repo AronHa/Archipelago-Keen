@@ -310,7 +310,16 @@ def create_ck_rules(self):
         ck4_points5k_rules["Isle of Tar - Ice Cream Cone 1"] = dict(requires=("pogo",))
 
     # Bag o' Sugar rule changes for Normal and Hard
-    # No changes needed
+    if difficulty == 1: # Normal
+        ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 1"] = dict(requires=("Red Gem","stunner","pogo",))
+        ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 2"] = dict(requires=("Red Gem","stunner","pogo",))
+        ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 3"] = dict(requires=("Red Gem","stunner","pogo",))
+        ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 4"] = dict(requires=("Red Gem","stunner","pogo",))
+    elif difficulty == 2: # Hard
+        ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 1"] = dict(requires=("Red Gem","stunner","pogo",))
+        ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 2"] = dict(requires=("Red Gem","stunner","pogo",))
+        ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 3"] = dict(requires=("Red Gem","stunner","pogo",))
+        ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 4"] = dict(requires=("Red Gem","stunner","pogo",))
 
     # Keen 4 Rules
     if ep in [0, 1]:
