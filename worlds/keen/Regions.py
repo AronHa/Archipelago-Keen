@@ -31,6 +31,7 @@ def create_ck5_regions(world):
     mw = world.multiworld
     player = world.player
     difficulty = world.options.difficulty_select.value
+    stunner_logic = world.options.stunner_logic_select.value
 
     menu = mw.get_region("Menu", player)
 
@@ -54,7 +55,7 @@ def create_ck5_regions(world):
             (
                 (
                     state.has("Regulation Control Center - Red Gem", player) and
-                    state.has("Regulation Control Center - Yellow Gem", player) and
+                    state.has("Regulation Control Center - Yellow Gem", player)
                 ) or
                 state.has("Regulation Control Center Gemset", player)
             )
@@ -77,8 +78,8 @@ def create_ck5_regions(world):
                 state.has("Brownian Motion Inducer Gemset", player)
             )
         ) and
-        state.has("Pogo Stick", player) and
-        (state.has("Neural Stunner", player) or difficulty < 2))
+        (state.has("Neural Stunner", player) or (stunner_logic == 1 and difficulty < 2)) and
+        state.has("Pogo Stick", player))
     
     for region_name in ck5_locations_by_region:
         attach_locations(world, region_name)

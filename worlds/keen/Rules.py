@@ -249,6 +249,9 @@ def create_ck_rules(self):
     player = self.player
     ep = self.options.episode_select.value
     difficulty = self.options.difficulty_select.value
+    stunner_logic = self.options.stunner_logic_select.value
+    stunner_req = ("stunner",) if stunner_logic == 0 else ()
+    pogo_or_stunner_req = ("pogo","stunner",) if stunner_logic == 0 else ("pogo|stunner",)
 
     # Flask rule changes for Normal and Hard
     if difficulty == 1: # Normal
@@ -264,10 +267,13 @@ def create_ck_rules(self):
         ck4_flask_rules["Isle of Fire - Lifewater Flask 1"] = dict(requires=("pogo",))
 
     # Keg rule changes for Normal and Hard
+    ck5_keg_rules["Defense Tunnel Vlook - Vitalin Keg 1"] = dict(requires=("Yellow Gem","pogo",)+stunner_req)
     if difficulty == 1: # Normal
+        ck5_keg_rules["Security Center - Vitalin Keg 1"] = dict(requires=("Blue Gem",)+stunner_req)
         ck5_keg_rules["Defense Tunnel Burrh - Vitalin Keg 1"] = dict(requires=("stunner","pogo",))
         ck5_keg_rules["Defense Tunnel Burrh - Vitalin Keg 2"] = dict(requires=("stunner","pogo",))
     elif difficulty == 2: # Hard
+        ck5_keg_rules["Security Center - Vitalin Keg 1"] = dict(requires=("Blue Gem",)+stunner_req)
         ck5_keg_rules["Defense Tunnel Burrh - Vitalin Keg 1"] = dict(requires=("stunner","pogo",))
         ck5_keg_rules["Defense Tunnel Burrh - Vitalin Keg 2"] = dict(requires=("stunner","pogo",))
 
@@ -288,7 +294,7 @@ def create_ck_rules(self):
         ck4_points5k_rules["Pyramid of the Moons - Ice Cream Cone 4"] = dict(requires=("pogo",))
         ck4_points5k_rules["Pyramid of the Moons - Ice Cream Cone 5"] = dict(requires=("pogo",))
         ck4_points5k_rules["Pyramid of the Moons - Ice Cream Cone 6"] = dict(requires=("pogo",))
-        ck4_points5k_rules["Pyramid of the Gnosticine Ancients - Ice Cream Cone 1"] = dict(requires=("stunner","pogo",))
+        ck4_points5k_rules["Pyramid of the Gnosticine Ancients - Ice Cream Cone 1"] = dict(requires=("pogo",)+stunner_req)
         ck4_points5k_rules["Isle of Tar - Ice Cream Cone 1"] = dict(requires=("pogo",))
     elif difficulty == 2: # Hard
         ck4_points5k_rules["Cave of the Descendents - Ice Cream Cone 3"] = dict(requires=("pogo",))
@@ -306,20 +312,56 @@ def create_ck_rules(self):
         ck4_points5k_rules["Pyramid of the Moons - Ice Cream Cone 4"] = dict(requires=("stunner","pogo",))
         ck4_points5k_rules["Pyramid of the Moons - Ice Cream Cone 5"] = dict(requires=("stunner","pogo",))
         ck4_points5k_rules["Pyramid of the Moons - Ice Cream Cone 6"] = dict(requires=("stunner","pogo",))
-        ck4_points5k_rules["Pyramid of the Gnosticine Ancients - Ice Cream Cone 1"] = dict(requires=("stunner","pogo",))
+        ck4_points5k_rules["Pyramid of the Gnosticine Ancients - Ice Cream Cone 1"] = dict(requires=("pogo",)+stunner_req)
         ck4_points5k_rules["Isle of Tar - Ice Cream Cone 1"] = dict(requires=("pogo",))
 
     # Bag o' Sugar rule changes for Normal and Hard
     if difficulty == 1: # Normal
+        ck5_points5k_rules["Security Center - Bag O' Sugar 1"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 2"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 3"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 4"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 5"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 6"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 7"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 8"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 9"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 10"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 11"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 12"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 13"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 14"] = dict(requires=("Blue Gem",)+stunner_req)
         ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 1"] = dict(requires=("Red Gem","stunner","pogo",))
         ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 2"] = dict(requires=("Red Gem","stunner","pogo",))
         ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 3"] = dict(requires=("Red Gem","stunner","pogo",))
         ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 4"] = dict(requires=("Red Gem","stunner","pogo",))
+        #ck5_points5k_rules["Brownian Motion Inducer - Bag O' Sugar 5"] = dict(requires=())
+        #ck5_points5k_rules["Brownian Motion Inducer - Bag O' Sugar 6"] = dict(requires=())
+        #ck5_points5k_rules["Brownian Motion Inducer - Bag O' Sugar 7"] = dict(requires=())
+        #ck5_points5k_rules["Brownian Motion Inducer - Bag O' Sugar 8"] = dict(requires=())
     elif difficulty == 2: # Hard
+        ck5_points5k_rules["Security Center - Bag O' Sugar 1"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 2"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 3"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 4"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 5"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 6"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 7"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 8"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 9"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 10"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 11"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 12"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 13"] = dict(requires=("Blue Gem",)+stunner_req)
+        ck5_points5k_rules["Security Center - Bag O' Sugar 14"] = dict(requires=("Blue Gem",)+stunner_req)
         ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 1"] = dict(requires=("Red Gem","stunner","pogo",))
         ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 2"] = dict(requires=("Red Gem","stunner","pogo",))
         ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 3"] = dict(requires=("Red Gem","stunner","pogo",))
         ck5_points5k_rules["Defense Tunnel Burrh - Bag O' Sugar 4"] = dict(requires=("Red Gem","stunner","pogo",))
+        ck5_points5k_rules["Brownian Motion Inducer - Bag O' Sugar 5"] = dict(requires=()+stunner_req)
+        ck5_points5k_rules["Brownian Motion Inducer - Bag O' Sugar 6"] = dict(requires=()+stunner_req)
+        ck5_points5k_rules["Brownian Motion Inducer - Bag O' Sugar 7"] = dict(requires=()+stunner_req)
+        ck5_points5k_rules["Brownian Motion Inducer - Bag O' Sugar 8"] = dict(requires=()+stunner_req)
 
     # Keen 4 Rules
     if ep in [0, 1]:
@@ -399,11 +441,11 @@ def create_ck_rules(self):
                               "Pyramid of the Gnosticine Ancients", requires=("pogo",))
         else:
             set_location_rule(world, player, "Pyramid of the Gnosticine Ancients Complete",
-                              "Pyramid of the Gnosticine Ancients", requires=("Green Gem","stunner","pogo",))
+                              "Pyramid of the Gnosticine Ancients", requires=("Green Gem","pogo",)+stunner_req)
             set_location_rule(world, player, "Pyramid of the Gnosticine Ancients - Red Gem",
                               "Pyramid of the Gnosticine Ancients")
             set_location_rule(world, player, "Pyramid of the Gnosticine Ancients - Green Gem",
-                              "Pyramid of the Gnosticine Ancients", requires=("stunner","pogo",))
+                              "Pyramid of the Gnosticine Ancients", requires=("pogo",)+stunner_req)
         # Isle of Tar
         if difficulty == 0:
             set_location_rule(world, player, "Isle of Tar Complete", "Isle of Tar",
@@ -428,16 +470,16 @@ def create_ck_rules(self):
                               requires=("Yellow Gem|pogo",))
         elif difficulty == 1:
             set_location_rule(world, player, "Isle of Fire Complete", "Isle of Fire",
-                              requires=("Yellow Gem", "Blue Gem",))
+                              requires=("Yellow Gem", "Blue Gem",)+stunner_req)
             set_location_rule(world, player, "Isle of Fire - Yellow Gem", "Isle of Fire")
             set_location_rule(world, player, "Isle of Fire - Blue Gem", "Isle of Fire",
-                              requires=("Yellow Gem",))
+                              requires=("Yellow Gem",)+stunner_req)
         else:
             set_location_rule(world, player, "Isle of Fire Complete", "Isle of Fire",
-                              requires=("Yellow Gem","Blue Gem","stunner","pogo",))
+                              requires=("Yellow Gem","Blue Gem","pogo",)+stunner_req)
             set_location_rule(world, player, "Isle of Fire - Yellow Gem", "Isle of Fire", requires=("pogo",))
             set_location_rule(world, player, "Isle of Fire - Blue Gem", "Isle of Fire",
-                              requires=("Yellow Gem","stunner","pogo",))
+                              requires=("Yellow Gem","pogo",)+stunner_req)
         # Well of Wishes
         set_location_rule(world, player, "Well of Wishes Complete", "Well of Wishes")
 
@@ -474,12 +516,12 @@ def create_ck_rules(self):
                               requires=("Blue Gem","Keycard",))
             set_location_rule(world, player, "Security Center - Red Gem", "Security Center")
             set_location_rule(world, player, "Security Center - Blue Gem", "Security Center",
-                              requires=("Red Gem",))
+                              requires=("Red Gem","pogo"))
             set_location_rule(world, player, "Security Center - Keycard", "Security Center",
                               requires=("Blue Gem",))
         elif difficulty == 1:
             set_location_rule(world, player, "Security Center Complete", "Security Center",
-                              requires=("Blue Gem","Keycard",))
+                              requires=("Blue Gem","Keycard",)+stunner_req)
             set_location_rule(world, player, "Security Center - Red Gem", "Security Center")
             set_location_rule(world, player, "Security Center - Blue Gem", "Security Center",
                               requires=("Red Gem","pogo",))
@@ -487,7 +529,7 @@ def create_ck_rules(self):
                               requires=("Blue Gem",))
         else:
             set_location_rule(world, player, "Security Center Complete", "Security Center",
-                              requires=("Blue Gem","Keycard",))
+                              requires=("Blue Gem","Keycard",)+stunner_req)
             set_location_rule(world, player, "Security Center - Red Gem", "Security Center")
             set_location_rule(world, player, "Security Center - Blue Gem", "Security Center",
                               requires=("Red Gem","pogo",))
@@ -495,10 +537,11 @@ def create_ck_rules(self):
                               requires=("Blue Gem",))
         # Defense Tunnel Vlook
         set_location_rule(world, player, "Defense Tunnel Vlook Complete", "Defense Tunnel Vlook",
-                          requires=("Yellow Gem","Keycard",))
-        set_location_rule(world, player, "Defense Tunnel Vlook - Red Gem", "Defense Tunnel Vlook")
+                          requires=("Yellow Gem","Keycard",)+stunner_req)
+        set_location_rule(world, player, "Defense Tunnel Vlook - Red Gem", "Defense Tunnel Vlook",
+                          requires=()+stunner_req)
         set_location_rule(world, player, "Defense Tunnel Vlook - Yellow Gem", "Defense Tunnel Vlook",
-                          requires=("Red Gem",))
+                          requires=("Red Gem",)+stunner_req)
         set_location_rule(world, player, "Defense Tunnel Vlook - Keycard", "Defense Tunnel Vlook")
         # Defense Tunnel Burrh
         if difficulty == 0:
@@ -562,13 +605,13 @@ def create_ck_rules(self):
                           requires=("Blue Gem",))
         # Regulation Control Center
         set_location_rule(world, player, "Regulation Control Center Complete", "Regulation Control Center",
-                          requires=("Red Gem","Yellow Gem","pogo",))
+                          requires=("Red Gem","Yellow Gem","pogo",)+stunner_req)
         set_location_rule(world, player, "Regulation Control Center - Red Gem", "Regulation Control Center",
                           requires=("stunner",)) # NOTE: Red Gem technically possible without stunner, but requires pixel-perfect movement
         set_location_rule(world, player, "Regulation Control Center - Yellow Gem",
-                          "Regulation Control Center", requires=("Red Gem","pogo|stunner",))
+                          "Regulation Control Center", requires=("Red Gem",)+pogo_or_stunner_req)
         set_location_rule(world, player, "Regulation Control Center - Blue Gem",
-                          "Regulation Control Center", requires=("Red Gem","Yellow Gem","pogo|stunner",))
+                          "Regulation Control Center", requires=("Red Gem","Yellow Gem",)+pogo_or_stunner_req)
         # Neutrino Burst Injector
         if difficulty == 0 or difficulty == 1:
             set_location_rule(world, player, "Neutrino Burst Injector Complete", "Neutrino Burst Injector",
@@ -583,21 +626,29 @@ def create_ck_rules(self):
             set_location_rule(world, player, "Neutrino Burst Injector - Blue Gem", "Neutrino Burst Injector",
                               requires=("pogo",))
         # Brownian Motion Inducer
-        set_location_rule(world, player, "Brownian Motion Inducer Complete", "Brownian Motion Inducer",
-                          requires=("Yellow Gem", "Blue Gem","pogo",))
-        set_location_rule(world, player, "Brownian Motion Inducer - Yellow Gem", "Brownian Motion Inducer",
-                          requires=("pogo",))
-        set_location_rule(world, player, "Brownian Motion Inducer - Blue Gem", "Brownian Motion Inducer",
-                          requires=("pogo",))
+        if difficulty == 0 or difficulty == 1:
+            set_location_rule(world, player, "Brownian Motion Inducer Complete", "Brownian Motion Inducer",
+                              requires=("Yellow Gem", "Blue Gem","pogo",))
+            set_location_rule(world, player, "Brownian Motion Inducer - Yellow Gem", "Brownian Motion Inducer",
+                              requires=("pogo",))
+            set_location_rule(world, player, "Brownian Motion Inducer - Blue Gem", "Brownian Motion Inducer",
+                              requires=("pogo",))
+        else:
+            set_location_rule(world, player, "Brownian Motion Inducer Complete", "Brownian Motion Inducer",
+                              requires=("Yellow Gem", "Blue Gem","pogo",)+stunner_req)
+            set_location_rule(world, player, "Brownian Motion Inducer - Yellow Gem", "Brownian Motion Inducer",
+                              requires=("pogo",)+stunner_req)
+            set_location_rule(world, player, "Brownian Motion Inducer - Blue Gem", "Brownian Motion Inducer",
+                              requires=("pogo",)+stunner_req)
         # Graviational Damping Hub
         set_location_rule(world, player, "Gravitational Damping Hub Complete", "Gravitational Damping Hub",
-                          requires=("Green Gem","Keycard",))
+                          requires=("Green Gem","Keycard",)+stunner_req)
         set_location_rule(world, player, "Gravitational Damping Hub - Red Gem", "Gravitational Damping Hub",
-                          requires=("Green Gem",))
+                          requires=("Green Gem",)+stunner_req)
         set_location_rule(world, player, "Gravitational Damping Hub - Green Gem", "Gravitational Damping Hub",
-                          requires=("pogo",))
+                          requires=("pogo",)+stunner_req)
         set_location_rule(world, player, "Gravitational Damping Hub - Keycard", "Gravitational Damping Hub",
-                          requires=("pogo",))
+                          requires=("pogo",)+stunner_req)
         # Quantum Explosion Dynamo
         set_location_rule(world, player, "Quantum Explosion Dynamo Complete", "Quantum Explosion Dynamo",
                           requires=("Red Gem", "Yellow Gem", "Blue Gem", "Green Gem","pogo",))
@@ -606,7 +657,7 @@ def create_ck_rules(self):
         set_location_rule(world, player, "Quantum Explosion Dynamo - Yellow Gem", "Quantum Explosion Dynamo",
                           requires=("pogo",))
         set_location_rule(world, player, "Quantum Explosion Dynamo - Blue Gem", "Quantum Explosion Dynamo",
-                          requires=("pogo",))
+                          requires=("pogo",)+stunner_req)
         set_location_rule(world, player, "Quantum Explosion Dynamo - Green Gem", "Quantum Explosion Dynamo",
                           requires=("pogo",))
 
